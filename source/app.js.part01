@@ -1,0 +1,22 @@
+const state={stars:0,done:new Set(),tool:{type:'住宅',icon:'🏠',score:[2,1,0,0,0]},city:Array(30).fill(null),quizScore:0};
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
+function confetti(){const box=$('#confetti'), colors=['#ff9f43','#ffd45b','#12a594','#2878d0','#e85d75'];for(let i=0;i<70;i++){const p=document.createElement('i');p.style.left=Math.random()*100+'vw';p.style.background=colors[i%colors.length];p.style.animationDelay=Math.random()*.5+'s';box.appendChild(p);setTimeout(()=>p.remove(),2300)}}
+function complete(id,next){if(state.done.has(id))return;state.done.add(id);state.stars++;$('#starCount').textContent=state.stars;$('#progress').style.width=(state.stars/7*100)+'%';document.querySelector(id).classList.add('celebrate');if(next){document.querySelector(next).classList.remove('locked');setTimeout(()=>document.querySelector(next).scrollIntoView({behavior:'smooth',block:'start'}),500)}confetti()}
+
+// Level 1
+$$('#level1Options .choice').forEach(btn=>btn.onclick=()=>{if(state.done.has('#level1'))return;$$('#level1Options .choice').forEach(b=>b.classList.remove('selected','correct','wrong'));btn.classList.add('selected');if(btn.dataset.correct==='true'){btn.classList.add('correct');$('#feedback1').textContent='✅ 正確！分流能同時照顧學生安全、家長接送與道路順暢。';complete('#level1','#level2')}else{btn.classList.add('wrong');$('#feedback1').textContent='再想想：這個方案是否讓某些人更危險或完全被忽略？'}});
+
+// Level 2
+const checks=$$('#projects input');function updateBudget(){let used=checks.filter(c=>c.checked).reduce((s,c)=>s+Number(c.dataset.cost),0);$('#budgetLeft').textContent=(1000-used).toLocaleString('zh-TW');$('#budgetLeft').parentElement.style.color=used>1000?'#d33':'#b56c00';$('#budgetHint').textContent=used>1000?'預算超支，請重新選擇！':'已使用新臺幣'+used+'萬元。'}checks.forEach(c=>c.onchange=updateBudget);
+$('#budgetSubmit').onclick=()=>{let selected=checks.filter(c=>c.checked), used=selected.reduce((s,c)=>s+Number(c.dataset.cost),0), groups=new Set(selected.map(c=>c.dataset.group));if(used>1000){$('#feedback2').textContent='❌ 超過預算，城市不能花不存在的錢。';return}if(selected.length<2||groups.size<3){$('#feedback2').textContent='🔎 請至少選2項，並照顧三種不同需求。';return}$('#feedback2').textContent='✅ 預算通過！你在有限經費中做出了多元公共選擇。';complete('#level2','#level3')};
+
+// Level 3
+$('#sortSubmit').onclick=()=>{let correct=0;$$('#sortGrid .sort-card').forEach(card=>{const s=card.querySelector('select');s.style.borderColor=s.value===card.dataset.answer?'#39a96b':'#e85d75';if(s.value===card.dataset.answer)correct++});if(correct===6){$('#feedback3').textContent='✅ 全部分類正確！永續城市要同時兼顧多個面向。';complete('#level3','#level4')}else $('#feedback3').textContent=`答對 ${correct}/6，請看看紅框選項再調整。`};
+
+// Level 4
+$('#smartSubmit').onclick=()=>{let correct=0,answered=0;$$('#smartGrid .smart-card').forEach(card=>{const r=card.querySelector('input:checked');if(r){answered++;if(r.value===card.dataset.answer)correct++}});if(answered<4){$('#feedback4').textContent='請完成四個判斷。';return}if(correct===4){$('#feedback4').textContent='✅ 完成！智慧城市也必須重視隱私、備援與數位公平。';complete('#level4','#level5')}else $('#feedback4').textContent=`答對 ${correct}/4。提示：科技之外，還要想「誰可能被排除」與「故障怎麼辦」。`};
+
+// City builder
+const canvas=$('#cityCanvas');for(let i=0;i<30;i++){const c=document.createElement('div');c.className='cell';c.dataset.i=i;c.onclick=()=>place(i);canvas.appendChild(c)}
+function place(i){if($('#level5').classList.contains('l

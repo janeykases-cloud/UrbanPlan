@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>城市規劃大師｜國小高年級自學遊戲</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="badge">🏙️ 任務代號：打造幸福未來城</div>
+      <h1>城市規劃大師</h1>
+      <p>觀察需求、分配預算、守護環境、善用科技，最後親手打造一座公平、安全、永續又聰明的未來城市！</p>
+      <a href="#mission" class="primary" style="display:inline-block;text-decoration:none;margin-top:6px">開始闖關</a>
+    </div>
+    <div class="hero-card">
+      <div class="city-illustration">
+        <div class="building b1"><span></span><span></span><span></span><span></span></div>
+        <div class="building b2"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="building b3"><span></span><span></span><span></span><span></span></div>
+        <div class="building b4"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
+      <div class="road-icon">🚲　🚌　🚶‍♀️　🌳</div>
+    </div>
+  </div>
+</header>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <strong>任務進度</strong>
+    <div class="progress-wrap"><div class="progress" id="progress"></div></div>
+    <div class="stars">⭐ <span id="starCount">0</span>/7</div>
+  </div>
+</nav>
+
+<main>
+  <section class="intro-grid">
+    <article class="mini-card"><h3>👀 看見不同需求</h3><p>同一個空間，學生、長者、商家與居民可能有不同期待。</p></article>
+    <article class="mini-card"><h3>⚖️ 做出公共選擇</h3><p>土地、經費有限，必須比較方案、說明理由並照顧少數需求。</p></article>
+    <article class="mini-card"><h3>🌱 打造永續城市</h3><p>好的城市要公平、安全、環境友善，也要能長久使用。</p></article>
+  </section>
+
+  <h2 class="section-title" id="mission">🗺️ 城市任務地圖</h2>
+
+  <section class="panel level" id="level1">
+    <span class="level-tag">第一關｜需求偵探</span>
+    <h2>校門口大塞車，誰的需求要被看見？</h2>
+    <p class="lead">請選出最完整的規劃方式。好的城市規劃不是只方便一種人，而是盡量兼顧安全與多元需求。</p>
+    <div class="scenario">
+      <div class="scene"><h3>🚦 現場狀況</h3><p>放學時，汽車、機車、公車、自行車和行人擠在一起。家長希望快速接送，學生希望安全過馬路，居民希望減少噪音與堵塞。</p></div>
+      <div class="options" id="level1Options">
+        <button class="choice" data-correct="false">A. 把人行道改成臨時停車區</button>
+        <button class="choice" data-correct="true">B. 設置分流接送區、清楚斑馬線與自行車停放區</button>
+        <button class="choice" data-correct="false">C. 只讓汽車通行，其他人繞路</button>
+      </div>
+    </div>
+    <div class="feedback" id="feedback1"></div>
+  </section>
+
+  <section class="panel level locked" id="level2">
+    <span class="level-tag">第二關｜公共預算挑戰</span>
+    <h2>新臺幣1,000萬元，要怎麼花？</h2>
+    <p class="lead">勾選你想推動的建設。總額不可超過新臺幣1,000萬元，而且至少要照顧三種不同需求。</p>
+    <div class="budget-box">
+      <aside class="budget-meter"><div>剩餘預算</div><div class="budget-number">新臺幣<span id="budgetLeft">1,000</span>萬</div><p id="budgetHint">請選擇2至4項建設。</p><button class="primary" id="budgetSubmit">送出城市預算</button></aside>
+      <div class="projects" id="projects">
+        <label class="project"><input type="checkbox" data-cost="400" data-group="安全"><div><strong>🚶 改善校園周邊人行道</strong><small>新臺幣400萬元｜安全、通學</small></div></label>
+        <label class="project"><input type="checkbox" data-cost="250" data-group="共融"><div><strong>🌳 公園遮陽與座椅</strong><small>新臺幣250萬元｜兒童、長者</small></div></label>
+        <label class="project"><input type="checkbox" data-cost="350" data-group="防災"><div><strong>🌧️ 淹水感測與警示</strong><small>新臺幣350萬元｜防災、安全</small></div></label>
+        <label class="project"><input type="checkbox" data-cost="300" data-group="交通"><div><strong>

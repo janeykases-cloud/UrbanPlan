@@ -1,0 +1,55 @@
+、學校、公園、公共運輸、防災與智慧服務各一項。好的城市不能只有高樓，也要照顧生活、環境與安全。</p>
+    <div class="builder">
+      <div class="toolbox">
+        <h3>🏗️ 城市工具箱</h3>
+        <div class="tool-buttons" id="toolButtons">
+          <button class="tool active" data-type="住宅" data-icon="🏠" data-score="2,1,0,0,0">🏠 住宅</button>
+          <button class="tool" data-type="學校" data-icon="🏫" data-score="2,2,0,0,0">🏫 學校</button>
+          <button class="tool" data-type="公園" data-icon="🌳" data-score="1,1,3,1,0">🌳 公園</button>
+          <button class="tool" data-type="醫院" data-icon="🏥" data-score="2,3,0,1,0">🏥 醫院</button>
+          <button class="tool" data-type="公車" data-icon="🚌" data-score="2,2,2,0,1">🚌 公車</button>
+          <button class="tool" data-type="自行車" data-icon="🚲" data-score="1,2,3,0,1">🚲 單車站</button>
+          <button class="tool" data-type="防災" data-icon="🌧️" data-score="1,2,1,3,1">🌧️ 防災池</button>
+          <button class="tool" data-type="太陽能" data-icon="☀️" data-score="0,1,3,1,2">☀️ 太陽能</button>
+          <button class="tool" data-type="市場" data-icon="🏮" data-score="2,1,0,0,0">🏮 市場</button>
+          <button class="tool" data-type="無障礙" data-icon="♿" data-score="3,2,0,0,1">♿ 無障礙</button>
+          <button class="tool" data-type="感測器" data-icon="📡" data-score="0,1,1,2,3">📡 感測器</button>
+          <button class="tool" data-type="道路" data-icon="🛣️" data-score="0,2,0,0,0">🛣️ 道路</button>
+          <button class="tool" data-type="清除" data-icon="🧽" data-score="0,0,0,0,0">🧽 清除</button>
+        </div>
+        <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap"><button class="secondary" id="resetCity">重設城市</button><button class="primary" id="citySubmit">完成設計</button></div>
+      </div>
+      <div class="city-canvas-wrap">
+        <div class="city-canvas" id="cityCanvas"></div>
+        <div class="scoreboard">
+          <div class="score-chip">公平<b id="scFair">0</b></div><div class="score-chip">安全<b id="scSafe">0</b></div><div class="score-chip">環境<b id="scEnv">0</b></div><div class="score-chip">韌性<b id="scRes">0</b></div><div class="score-chip">智慧<b id="scSmart">0</b></div>
+        </div>
+      </div>
+    </div>
+    <div class="feedback" id="feedback5"></div>
+  </section>
+
+  <section class="panel level locked" id="quiz">
+    <span class="level-tag">終極關｜五題過關測驗</span>
+    <h2>城市規劃大師認證考</h2>
+    <p class="lead">答對4題以上即可獲得城市規劃大師證書。</p>
+    <div id="quizBox"></div>
+    <button class="primary" id="quizSubmit">送出答案</button><div class="feedback" id="feedbackQuiz"></div>
+  </section>
+
+  <section class="panel level locked certificate-zone" id="certificate">
+    <h2>🎓 領取過關證書</h2>
+    <p>輸入姓名，製作專屬證書。</p>
+    <input id="studentName" maxlength="20" placeholder="請輸入姓名" />
+    <button class="primary" id="makeCert">製作證書</button>
+    <br />
+    <canvas id="certCanvas" width="1200" height="850" aria-label="城市規劃大師證書"></canvas>
+    <div class="cert-actions"><button class="primary" id="downloadCert">下載PNG證書</button><button class="secondary" id="printCert">列印證書</button></div>
+  </section>
+</main>
+<footer>城市規劃大師｜跨領域自學遊戲・適用國小高年級</footer>
+<div class="toast" id="toast"></div><div class="confetti" id="confetti"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

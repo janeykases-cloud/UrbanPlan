@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>城市規劃大師｜國小高年級自學遊戲</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="badge">🏙️ 任務代號：打造幸福未來城</div>
+      <h1>城市規劃大師</h1>
+      <p>觀察需求、分配預算、守護環境、善用科技，最後親手打造一座公平、安全、永續又聰明的未來城市！</p>
+      <a href="#mission" class="primary" style="display:inline-block;text-decoration:none;margin-top:6px">開始闖關</a>
+    </div>
+    <div class="hero-card">
+      <div class="city-illustration">
+        <div class="building b1"><span></span><span></span><span></span><span></span></div>
+        <div class="building b2"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="building b3"><span></span><span></span><span></span><span></span></div>
+        <div class="building b4"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
+      <div class="road-icon">🚲　🚌　🚶‍♀️　🌳</div>
+    </div>
+  </div>
+</header>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <strong>任務進度</strong>
+    <div class="progress-wrap"><div class="progress" id="progress"></div></div>
+    <div class="stars">⭐ <span id="starCount">0</span>/7</div>
+  </div>
+</nav>
+
+<main>
+  <section class="intro-grid">
+    <article class="mini-card"><h3>👀 看見不同需求</h3><p>同一個空間，學生、長者、商家與居民可能有不同期待。</p></article>
+    <article class="mini-card"><h3>⚖️ 做出公共選擇</h3><p>土地、經費有限，必須比較方案、說明理由並照顧少數需求。</p></article>
+    <article class="mini-card"><h3>🌱 打造永續城市</h3><p>好的城市要公平、安全、環境友善，也要能長久使用。</p></article>
+  </section>
+
+  <h2 class="section-title" id="mission">🗺️ 城市任務地圖</h2>
+
+  <section class="panel level" id="level1">
+    <span class="level-tag">第一關｜需求偵探</span>
+    <h2>校門口大塞車，誰的需求要被看見？</h2>
+    <p class="lead">請選出最完整的規劃方式。好的城市規劃不是只方便一種人，而是盡量兼顧安全與多元需求。</p>
+    <div class="scenario">
+      <div class="scene"><h3>🚦 現場狀況</h3><p>放學時，汽車、機車、公車、自行車和行人擠在一起。家長希望快速接送，學生希望安全過馬路，居民希望減少噪音與堵塞。</p></div>
+      <div class="options" id="level1Options">
+        <button class="choice" data-correct="false">A. 把人行道改成臨時停車區</button>
+        <button class="choice" data-correct="true">B. 設置分流接送區、清楚斑馬線與自行車停放區</button>
+        <button class="choice" data-correct="false">C. 只讓汽車通行，其他人繞路</button>
+      </div>
+    </div>
+    <div class="feedback" id="feedback1"></div>
+  </section>
+
+  <section class="panel level locked" id="level2">
+    <span class="level-tag">第二關｜公共預算挑戰</span>
+    <h2>新臺幣1,000萬元，要怎麼花？</h2>
+    <p class="lead">勾選你想推動的建設。總額不可超過新臺幣1,000萬元，而且至少要照顧三種不同需求。</p>
+    <div class="budget-box">
+      <aside class="budget-meter"><div>剩餘預算</div><div class="budget-number">新臺幣<span id="budgetLeft">1,000</span>萬</div><p id="budgetHint">請選擇2至4項建設。</p><button class="primary" id="budgetSubmit">送出城市預算</button></aside>
+      <div class="projects" id="projects">
+        <label class="project"><input type="checkbox" data-cost="400" data-group="安全"><div><strong>🚶 改善校園周邊人行道</strong><small>新臺幣400萬元｜安全、通學</small></div></label>
+        <label class="project"><input type="checkbox" data-cost="250" data-group="共融"><div><strong>🌳 公園遮陽與座椅</strong><small>新臺幣250萬元｜兒童、長者</small></div></label>
+        <label class="project"><input type="checkbox" data-cost="350" data-group="防災"><div><strong>🌧️ 淹水感測與警示</strong><small>新臺幣350萬元｜防災、安全</small></div></label>
+        <label class="project"><input type="checkbox" data-cost="300" data-group="交通"><div><strong>🚲 公共自行車站</strong><small>新臺幣300萬元｜交通、減碳</small></div></label>
+        <label class="project"><input type="checkbox" data-cost="500" data-group="文化"><div><strong>🏮 修復老市場</strong><small>新臺幣500萬元｜文化、商業</small></div></label>
+        <label class="project"><input type="checkbox" data-cost="300" data-group="共融"><div><strong>♿ 改善無障礙設施</strong><small>新臺幣300萬元｜公平、共融</small></div></label>
+      </div>
+    </div>
+    <div class="feedback" id="feedback2"></div>
+  </section>
+
+  <section class="panel level locked" id="level3">
+    <span class="level-tag">第三關｜永續分類站</span>
+    <h2>這些設施主要解決什麼問題？</h2>
+    <p class="lead">替每一張城市卡選擇最適合的分類：公平、安全、環境或韌性。</p>
+    <div class="sort-grid" id="sortGrid">
+      <div class="sort-card" data-answer="環境"><div class="emoji">🌲</div><strong>增加行道樹</strong><select><option value="">選分類</option><option>公平</option><option>安全</option><option>環境</option><option>韌性</option></select></div>
+      <div class="sort-card" data-answer="公平"><div class="emoji">♿</div><strong>無障礙坡道</strong><select><option value="">選分類</option><option>公平</option><option>安全</option><option>環境</option><option>韌性</option></select></div>
+      <div class="sort-card" data-answer="韌性"><div class="emoji">🌧️</div><strong>雨水貯留池</strong><select><option value="">選分類</option><option>公平</option><option>安全</option><option>環境</option><option>韌性</option></select></div>
+      <div class="sort-card" data-answer="安全"><div class="emoji">🚸</div><strong>行人專用號誌</strong><select><option value="">選分類</option><option>公平</option><option>安全</option><option>環境</option><option>韌性</option></select></div>
+      <div class="sort-card" data-answer="環境"><div class="emoji">☀️</div><strong>太陽能路燈</strong><select><option value="">選分類</option><option>公平</option><option>安全</option><option>環境</option><option>韌性</option></select></div>
+      <div class="sort-card" data-answer="公平"><div class="emoji">🧓</div><strong>長者友善候車椅</strong><select><option value="">選分類</option><option>公平</option><option>安全</option><option>環境</option><option>韌性</option></select></div>
+    </div>
+    <button class="primary" id="sortSubmit">檢查分類</button><div class="feedback" id="feedback3"></div>
+  </section>
+
+  <section class="panel level locked" id="level4">
+    <span class="level-tag">第四關｜智慧城市判斷室</span>
+    <h2>科技很厲害，但真的適合所有人嗎？</h2>
+    <p class="lead">每個智慧服務都有優點，也可能帶來隱私、故障或數位落差。請選出較負責任的做法。</p>
+    <div class="smart-grid" id="smartGrid">
+      <div class="smart-card" data-answer="b"><h3>📱 所有公共服務改成App</h3><label><input type="radio" name="s1" value="a"> 取消所有人工服務</label><label><input type="radio" name="s1" value="b"> 保留電話、服務台等替代方式</label></div>
+      <div class="smart-card" data-answer="a"><h3>🎥 公園裝設安全攝影機</h3><label><input type="radio" name="s2" value="a"> 設定保存期限與查閱規則</label><label><input type="radio" name="s2" value="b"> 任何人都能下載影片</label></div>
+      <div class="smart-card" data-answer="b"><h3>🗑️ 智慧垃圾桶</h3><label><input type="radio" name="s3" value="a"> 有感測器就不必減少垃圾</label><label><input type="radio" name="s3" value="b"> 同時推動分類、減量與故障通報</label></div>
+      <div class="smart-card" data-answer="a"><h3>🚦 智慧交通號誌</h3><label><input type="radio" name="s4" value="a"> 系統故障時仍有安全備援</label><label><input type="radio" name="s4" value="b"> 完全依賴網路，沒有替代方案</label></div>
+    </div>
+    <button class="primary" id="smartSubmit">完成智慧判斷</button><div class="feedback" id="feedback4"></div>
+  </section>
+
+  <section class="panel level locked" id="level5">
+    <span class="level-tag">第五關｜我的未來城市</span>
+    <h2>點選工具，再點地圖格子，打造你的城市！</h2>
+    <p class="lead">至少放入住宅、學校、公園、公共運輸、防災與智慧服務各一項。好的城市不能只有高樓，也要照顧生活、環境與安全。</p>
+    <div class="builder">
+      <div class="toolbox">
+        <h3>🏗️ 城市工具箱</h3>
+        <div class="tool-buttons" id="toolButtons">
+          <button class="tool active" data-type="住宅" data-icon="🏠" data-score="2,1,0,0,0">🏠 住宅</button>
+          <button class="tool" data-type="學校" data-icon="🏫" data-score="2,2,0,0,0">🏫 學校</button>
+          <button class="tool" data-type="公園" data-icon="🌳" data-score="1,1,3,1,0">🌳 公園</button>
+          <button class="tool" data-type="醫院" data-icon="🏥" data-score="2,3,0,1,0">🏥 醫院</button>
+          <button class="tool" data-type="公車" data-icon="🚌" data-score="2,2,2,0,1">🚌 公車</button>
+          <button class="tool" data-type="自行車" data-icon="🚲" data-score="1,2,3,0,1">🚲 單車站</button>
+          <button class="tool" data-type="防災" data-icon="🌧️" data-score="1,2,1,3,1">🌧️ 防災池</button>
+          <button class="tool" data-type="太陽能" data-icon="☀️" data-score="0,1,3,1,2">☀️ 太陽能</button>
+          <button class="tool" data-type="市場" data-icon="🏮" data-score="2,1,0,0,0">🏮 市場</button>
+          <button class="tool" data-type="無障礙" data-icon="♿" data-score="3,2,0,0,1">♿ 無障礙</button>
+          <button class="tool" data-type="感測器" data-icon="📡" data-score="0,1,1,2,3">📡 感測器</button>
+          <button class="tool" data-type="道路" data-icon="🛣️" data-score="0,2,0,0,0">🛣️ 道路</button>
+          <button class="tool" data-type="清除" data-icon="🧽" data-score="0,0,0,0,0">🧽 清除</button>
+        </div>
+        <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap"><button class="secondary" id="resetCity">重設城市</button><button class="primary" id="citySubmit">完成設計</button></div>
+      </div>
+      <div class="city-canvas-wrap">
+        <div class="city-canvas" id="cityCanvas"></div>
+        <div class="scoreboard">
+          <div class="score-chip">公平<b id="scFair">0</b></div><div class="score-chip">安全<b id="scSafe">0</b></div><div class="score-chip">環境<b id="scEnv">0</b></div><div class="score-chip">韌性<b id="scRes">0</b></div><div class="score-chip">智慧<b id="scSmart">0</b></div>
+        </div>
+      </div>
+    </div>
+    <div class="feedback" id="feedback5"></div>
+  </section>
+
+  <section class="panel level locked" id="quiz">
+    <span class="level-tag">終極關｜五題過關測驗</span>
+    <h2>城市規劃大師認證考</h2>
+    <p class="lead">答對4題以上即可獲得城市規劃大師證書。</p>
+    <div id="quizBox"></div>
+    <button class="primary" id="quizSubmit">送出答案</button><div class="feedback" id="feedbackQuiz"></div>
+  </section>
+
+  <section class="panel level locked certificate-zone" id="certificate">
+    <h2>🎓 領取過關證書</h2>
+    <p>輸入姓名，製作專屬證書。</p>
+    <input id="studentName" maxlength="20" placeholder="請輸入姓名" />
+    <button class="primary" id="makeCert">製作證書</button>
+    <br />
+    <canvas id="certCanvas" width="1200" height="850" aria-label="城市規劃大師證書"></canvas>
+    <div class="cert-actions"><button class="primary" id="downloadCert">下載PNG證書</button><button class="secondary" id="printCert">列印證書</button></div>
+  </section>
+</main>
+<footer>城市規劃大師｜跨領域自學遊戲・適用國小高年級</footer>
+<div class="toast" id="toast"></div><div class="confetti" id="confetti"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

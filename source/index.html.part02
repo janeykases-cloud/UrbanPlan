@@ -1,0 +1,40 @@
+🚲 公共自行車站</strong><small>新臺幣300萬元｜交通、減碳</small></div></label>
+        <label class="project"><input type="checkbox" data-cost="500" data-group="文化"><div><strong>🏮 修復老市場</strong><small>新臺幣500萬元｜文化、商業</small></div></label>
+        <label class="project"><input type="checkbox" data-cost="300" data-group="共融"><div><strong>♿ 改善無障礙設施</strong><small>新臺幣300萬元｜公平、共融</small></div></label>
+      </div>
+    </div>
+    <div class="feedback" id="feedback2"></div>
+  </section>
+
+  <section class="panel level locked" id="level3">
+    <span class="level-tag">第三關｜永續分類站</span>
+    <h2>這些設施主要解決什麼問題？</h2>
+    <p class="lead">替每一張城市卡選擇最適合的分類：公平、安全、環境或韌性。</p>
+    <div class="sort-grid" id="sortGrid">
+      <div class="sort-card" data-answer="環境"><div class="emoji">🌲</div><strong>增加行道樹</strong><select><option value="">選分類</option><option>公平</option><option>安全</option><option>環境</option><option>韌性</option></select></div>
+      <div class="sort-card" data-answer="公平"><div class="emoji">♿</div><strong>無障礙坡道</strong><select><option value="">選分類</option><option>公平</option><option>安全</option><option>環境</option><option>韌性</option></select></div>
+      <div class="sort-card" data-answer="韌性"><div class="emoji">🌧️</div><strong>雨水貯留池</strong><select><option value="">選分類</option><option>公平</option><option>安全</option><option>環境</option><option>韌性</option></select></div>
+      <div class="sort-card" data-answer="安全"><div class="emoji">🚸</div><strong>行人專用號誌</strong><select><option value="">選分類</option><option>公平</option><option>安全</option><option>環境</option><option>韌性</option></select></div>
+      <div class="sort-card" data-answer="環境"><div class="emoji">☀️</div><strong>太陽能路燈</strong><select><option value="">選分類</option><option>公平</option><option>安全</option><option>環境</option><option>韌性</option></select></div>
+      <div class="sort-card" data-answer="公平"><div class="emoji">🧓</div><strong>長者友善候車椅</strong><select><option value="">選分類</option><option>公平</option><option>安全</option><option>環境</option><option>韌性</option></select></div>
+    </div>
+    <button class="primary" id="sortSubmit">檢查分類</button><div class="feedback" id="feedback3"></div>
+  </section>
+
+  <section class="panel level locked" id="level4">
+    <span class="level-tag">第四關｜智慧城市判斷室</span>
+    <h2>科技很厲害，但真的適合所有人嗎？</h2>
+    <p class="lead">每個智慧服務都有優點，也可能帶來隱私、故障或數位落差。請選出較負責任的做法。</p>
+    <div class="smart-grid" id="smartGrid">
+      <div class="smart-card" data-answer="b"><h3>📱 所有公共服務改成App</h3><label><input type="radio" name="s1" value="a"> 取消所有人工服務</label><label><input type="radio" name="s1" value="b"> 保留電話、服務台等替代方式</label></div>
+      <div class="smart-card" data-answer="a"><h3>🎥 公園裝設安全攝影機</h3><label><input type="radio" name="s2" value="a"> 設定保存期限與查閱規則</label><label><input type="radio" name="s2" value="b"> 任何人都能下載影片</label></div>
+      <div class="smart-card" data-answer="b"><h3>🗑️ 智慧垃圾桶</h3><label><input type="radio" name="s3" value="a"> 有感測器就不必減少垃圾</label><label><input type="radio" name="s3" value="b"> 同時推動分類、減量與故障通報</label></div>
+      <div class="smart-card" data-answer="a"><h3>🚦 智慧交通號誌</h3><label><input type="radio" name="s4" value="a"> 系統故障時仍有安全備援</label><label><input type="radio" name="s4" value="b"> 完全依賴網路，沒有替代方案</label></div>
+    </div>
+    <button class="primary" id="smartSubmit">完成智慧判斷</button><div class="feedback" id="feedback4"></div>
+  </section>
+
+  <section class="panel level locked" id="level5">
+    <span class="level-tag">第五關｜我的未來城市</span>
+    <h2>點選工具，再點地圖格子，打造你的城市！</h2>
+    <p class="lead">至少放入住宅

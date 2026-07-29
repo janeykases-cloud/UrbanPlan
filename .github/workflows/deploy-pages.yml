@@ -1,28 +1,24 @@
-name: Deploy City Planning Game to GitHub Pages
+name: Build City Planning Game
 
 on:
   push:
     branches:
       - main
     paths-ignore:
+      - site/**
       - deployment-status.json
   workflow_dispatch:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  group: build-site
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -30,36 +26,27 @@ jobs:
       - name: Assemble static website
         shell: bash
         run: |
-          mkdir -p _site
-          cat source/index.html.part* > _site/index.html
-          cat source/styles.css.part* > _site/styles.css
-          cat source/app.js.part* > _site/app.js
-          touch _site/.nojekyll
-          test -s _site/index.html
-          test -s _site/styles.css
-          test -s _site/app.js
+          rm -rf site
+          mkdir -p site
+          cat source/index.html.part* > site/index.html
+          cat source/styles.css.part* > site/styles.css
+          cat source/app.js.part* > site/app.js
+          touch site/.nojekyll
+          test -s site/index.html
+          test -s site/styles.css
+          test -s site/app.js
 
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: _site
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
-      - name: Record successful deployment
-        env:
-          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+      - name: Record deployment links
         shell: bash
         run: |
-          printf '{\n  "status": "success",\n  "url": "%s",\n  "source_commit": "%s",\n  "deployed_at": "%s"\n}\n' \
-            "$PAGE_URL" "$GITHUB_SHA" "$(date -u +'%Y-%m-%dT%H:%M:%SZ')" > deployment-status.json
+          printf '{\n  "status": "success",\n  "primary_url": "https://raw.githack.com/%s/main/site/index.html",\n  "cdn_url": "https://cdn.jsdelivr.net/gh/%s@main/site/index.html",\n  "source_commit": "%s",\n  "built_at": "%s"\n}\n' \
+            "$GITHUB_REPOSITORY" "$GITHUB_REPOSITORY" "$GITHUB_SHA" "$(date -u +'%Y-%m-%dT%H:%M:%SZ')" > deployment-status.json
+
+      - name: Commit built website
+        shell: bash
+        run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add deployment-status.json
-          git commit -m "Record successful Pages deployment [skip ci]"
+          git add site deployment-status.json
+          git commit -m "Build deployable city planning website [skip ci]"
           git push

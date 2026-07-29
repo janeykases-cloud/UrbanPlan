@@ -1,0 +1,5 @@
+ight';ctx.fillText(new Date().toLocaleDateString('zh-TW'),1090,785)}
+$('#makeCert').onclick=()=>{const n=$('#studentName').value.trim();if(!n){toast('請先輸入姓名');return}drawCert(n);confetti();toast('專屬證書完成！')};
+$('#downloadCert').onclick=()=>{const n=$('#studentName').value.trim()||'城市規劃大師';drawCert(n);const a=document.createElement('a');a.download=`${n}-城市規劃大師證書.png`;a.href=$('#certCanvas').toDataURL('image/png');a.click()};
+$('#printCert').onclick=()=>{const n=$('#studentName').value.trim()||'城市規劃大師';drawCert(n);window.print()};
+drawCert('城市小市民');
